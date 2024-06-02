@@ -33,8 +33,17 @@ public class ClienteController {
 	   return clienteService.createCliente(cliente);
 	  }
 	
-	@PostMapping("/ActulizarCliente/{id}")
+	@PostMapping("/ActualizarCliente/{id}")
 	 public Cliente UpdateClient(@PathVariable long id,@RequestBody Cliente cliente) {
+		Cliente clienteExistente = clienteService.ListarCliente(id);
+		LocalDateTime ahora = LocalDateTime.now();
+		clienteExistente.setCorreo(cliente.getCorreo());
+		clienteExistente.setFechModificación(ahora);
+	   return clienteService.updateCliente(clienteExistente);
+	  }
+	
+	@PostMapping("/EliminarCliente/{id}")
+	 public Cliente DeleteClient(@PathVariable long id,@RequestBody Cliente cliente) {
 		Cliente clienteExistente = clienteService.ListarCliente(id);
 		LocalDateTime ahora = LocalDateTime.now();
 		clienteExistente.setCorreo(cliente.getCorreo());
