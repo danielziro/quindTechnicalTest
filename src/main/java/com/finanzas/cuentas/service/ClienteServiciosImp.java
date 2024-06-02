@@ -10,7 +10,7 @@ import com.finanzas.cuentas.entiti.Cliente;
 import com.finanzas.cuentas.repository.ClienteRepository;
 
 @Service
-public class CuentasServiciosImp implements ClienteServicio{
+public class ClienteServiciosImp implements ClienteServicio{
 
 	@Autowired
 	private ClienteRepository clienteRepository;
