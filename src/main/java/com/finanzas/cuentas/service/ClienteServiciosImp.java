@@ -3,7 +3,6 @@ package com.finanzas.cuentas.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.finanzas.cuentas.entiti.Cliente;
@@ -28,7 +27,6 @@ public class ClienteServiciosImp implements ClienteServicio{
 	@Override
 	public Cliente ListarCliente(long id) {
 		Cliente clienteExistente = clienteRepository.findById(id).get();
-		
 	   return clienteExistente;
 	}
 

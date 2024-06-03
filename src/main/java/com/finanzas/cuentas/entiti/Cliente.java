@@ -37,15 +37,15 @@ public class Cliente {
 	@Column(name="fechCreacion",nullable=false)
 	private LocalDateTime fechCreacion;
 	
-	@Column(name="fechModificación",nullable=false)
-	private LocalDateTime fechModificación;
+	@Column(name="fechModificacion",nullable=false)
+	private LocalDateTime fechModificacion;
 	
 	public Cliente() {
 		
 	}
 
 	public Cliente(Long id, Long documento, Long tipoDocumento, String nombres, String apellido, String correo,
-			String fechNacimiento, LocalDateTime fechCreacion, LocalDateTime fechModificación) {
+			String fechNacimiento, LocalDateTime fechCreacion, LocalDateTime fechModificacion) {
 		super();
 		this.id = id;
 		this.documento = documento;
@@ -55,11 +55,11 @@ public class Cliente {
 		this.correo = correo;
 		this.fechNacimiento = fechNacimiento;
 		this.fechCreacion = fechCreacion;
-		this.fechModificación = fechModificación;
+		this.fechModificacion = fechModificacion;
 	}
 	
 	public Cliente( Long documento, Long tipoDocumento, String nombres, String apellido, String correo,
-			String fechNacimiento, LocalDateTime fechCreacion, LocalDateTime fechModificación) {
+			String fechNacimiento, LocalDateTime fechCreacion, LocalDateTime fechModificacion) {
 		super();
 		this.documento = documento;
 		this.tipoDocumento = tipoDocumento;
@@ -68,7 +68,7 @@ public class Cliente {
 		this.correo = correo;
 		this.fechNacimiento = fechNacimiento;
 		this.fechCreacion = fechCreacion;
-		this.fechModificación = fechModificación;
+		this.fechModificacion = fechModificacion;
 	}
 
 	public Long getId() {
@@ -135,19 +135,19 @@ public class Cliente {
 		this.fechCreacion = fechCreacion;
 	}
 
-	public LocalDateTime getFechModificación() {
-		return fechModificación;
+	public LocalDateTime getFechModificacion() {
+		return fechModificacion;
 	}
 
-	public void setFechModificación(LocalDateTime fechModificación) {
-		this.fechModificación = fechModificación;
+	public void setFechModificacion(LocalDateTime fechModificacion) {
+		this.fechModificacion = fechModificacion;
 	}
 
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", documento=" + documento + ", tipoDocumento=" + tipoDocumento + ", nombres="
 				+ nombres + ", apellido=" + apellido + ", correo=" + correo + ", fechNacimiento=" + fechNacimiento
-				+ ", fechCreacion=" + fechCreacion + ", fechModificación=" + fechModificación + "]";
+				+ ", fechCreacion=" + fechCreacion + ", fechModificación=" + fechModificacion + "]";
 	}
 
 

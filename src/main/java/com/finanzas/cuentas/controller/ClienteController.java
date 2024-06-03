@@ -29,7 +29,9 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/crearCliente")
-	 public Cliente createClient(@RequestBody Cliente cliente) {
+	 public Cliente createCliente(@RequestBody Cliente cliente) {
+		LocalDateTime ahora = LocalDateTime.now();
+		cliente.setFechModificacion(ahora);
 	   return clienteService.createCliente(cliente);
 	  }
 	
@@ -38,7 +40,7 @@ public class ClienteController {
 		Cliente clienteExistente = clienteService.ListarCliente(id);
 		LocalDateTime ahora = LocalDateTime.now();
 		clienteExistente.setCorreo(cliente.getCorreo());
-		clienteExistente.setFechModificación(ahora);
+		clienteExistente.setFechModificacion(ahora);
 	   return clienteService.updateCliente(clienteExistente);
 	  }
 	
