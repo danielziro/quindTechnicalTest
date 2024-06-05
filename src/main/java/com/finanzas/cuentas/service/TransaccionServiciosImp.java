@@ -28,7 +28,7 @@ public class TransaccionServiciosImp implements TransaccionServicio{
 		Cuenta cuentaOrigenActualizar =  new Cuenta();
 		
 		Cuenta cuentaOrigen = cuentaRepository.findAllNotCancell(transaccion.getOrigen());
-		if(transaccion.getTipTransaccion() == 3) {
+	if(transaccion.getTipTransaccion() == 3) {
 			
 		if(cuentaOrigen.getEstado() != 3 || cuentaOrigen.getEstado()!= 2) {
 			

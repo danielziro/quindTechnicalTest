@@ -14,7 +14,7 @@ public interface ClienteServicio {
 	
 	public Cliente ListarCliente(long id);
 	
-	public Cliente updateCliente(Cliente cliente);
+	public Cliente updateCliente(long id,Cliente cliente);
 	
 	public void deletCliente(long id);
 	

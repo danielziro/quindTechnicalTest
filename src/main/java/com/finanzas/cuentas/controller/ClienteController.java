@@ -1,7 +1,6 @@
 package com.finanzas.cuentas.controller;
 
 import java.text.ParseException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +36,7 @@ public class ClienteController {
 	
 	@PostMapping("/ActualizarCliente/{id}")
 	 public Cliente UpdateClient(@PathVariable long id,@RequestBody Cliente cliente) {
-		Cliente clienteExistente = clienteService.ListarCliente(id);
-		LocalDateTime ahora = LocalDateTime.now();
-		clienteExistente.setCorreo(cliente.getCorreo());
-		clienteExistente.setFechModificacion(ahora);
-	   return clienteService.updateCliente(clienteExistente);
+	   return clienteService.updateCliente(id,cliente);
 	  }
 	
 	@PostMapping("/EliminarCliente/{documento}")

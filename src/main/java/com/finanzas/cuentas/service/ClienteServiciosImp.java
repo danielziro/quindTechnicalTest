@@ -1,13 +1,12 @@
 package com.finanzas.cuentas.service;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +21,7 @@ public class ClienteServiciosImp implements ClienteServicio{
 
 	@Autowired
 	private ClienteRepository clienteRepository;
+	
 	@Autowired
 	private CuentaRepository cuentaRepository;
 	
@@ -33,7 +33,6 @@ public class ClienteServiciosImp implements ClienteServicio{
 	@Override
 	public Cliente createCliente(Cliente cliente) throws ParseException {
 		LocalDateTime ahora = LocalDateTime.now();
-		Cliente cli=new Cliente();
 		cliente.setFechModificacion(ahora);
 		cliente.setFechCreacion(ahora);
 		
@@ -50,28 +49,40 @@ public class ClienteServiciosImp implements ClienteServicio{
 			String fechaString = formatter.format(fechaNacimiento);
 		
 			cliente.setFechNacimiento(fechaString);
-			cliente =clienteRepository.save(cliente);
+			cliente = clienteRepository.save(cliente);
 		}
 		
 		
-		return null;
+		return cliente;
 	}
 
 	@Override
 	public Cliente ListarCliente(long id) {
-		Cliente clienteExistente = clienteRepository.findById(id).get();
-	   return clienteExistente;
+	   return clienteRepository.findById(id).get();
 	}
 
 	@Override
-	public Cliente updateCliente(Cliente cliente) {
-		return clienteRepository.save(cliente);
+	public Cliente updateCliente(long id , Cliente cliente) {
+		Cliente clienteReturn = new Cliente();
+		 Optional<Cliente> optionalCliente = clienteRepository.findById(id);
+		 Cliente clienteExistente = optionalCliente.get();
+		 if (optionalCliente.isPresent()) {
+			
+		        LocalDateTime ahora = LocalDateTime.now();
+		        clienteExistente.setCorreo(cliente.getCorreo());
+		        clienteExistente.setFechModificacion(ahora);
+		        clienteReturn = clienteRepository.save(clienteExistente);
+		 }else {
+		        System.err.println("El cliente por id no funciona");
+		    }
+		return clienteReturn;
+		
+	
 	}
 
 	@Override
 	public void deletCliente(long documento) {
 		
-
 		Cliente cliente=clienteRepository.seleteByDocument(documento);
 		Cuenta cuenta=cuentaRepository.findAllNotCancell(cliente.getId());
 		if(cuenta==null) {
@@ -82,11 +93,4 @@ public class ClienteServiciosImp implements ClienteServicio{
 		
 	}
 	
-	
-	
-	
-	
-	
-
-
 }
