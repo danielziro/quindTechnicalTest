@@ -58,7 +58,7 @@ public class Cliente {
 		this.fechModificacion = fechModificacion;
 	}
 	
-	public Cliente( Long documento, Long tipoDocumento, String nombres, String apellido, String correo,
+	public Cliente(Long documento, Long tipoDocumento, String nombres, String apellido, String correo,
 			String fechNacimiento, LocalDateTime fechCreacion, LocalDateTime fechModificacion) {
 		super();
 		this.documento = documento;

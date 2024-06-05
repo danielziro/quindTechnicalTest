@@ -1,5 +1,6 @@
 package com.finanzas.cuentas.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 
@@ -9,7 +10,7 @@ public interface ClienteServicio {
 
 	public List<Cliente> listarAllClientes();
 	
-	public Cliente createCliente(Cliente cliente);
+	public Cliente createCliente(Cliente cliente) throws ParseException;
 	
 	public Cliente ListarCliente(long id);
 	

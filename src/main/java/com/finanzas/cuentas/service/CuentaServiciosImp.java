@@ -26,18 +26,21 @@ public class CuentaServiciosImp implements CuentaServicio{
 	@Override
 	public Cuenta creaCuenta(Cuenta cuenta) {
 		Cuenta cuentaCreada = new Cuenta();
+		
+		cuentaCreada= ListarCuenta(cuenta.getId());
 		System.out.println("id cuenta"+cuentaCreada);
-		 ListarCuenta(cuentaCreada.getId());
+		 
 		long nCuenta= (long) (Math.random() * 90000);
-		if(cuenta.getClienteId()!=0) {
+		if(cuenta.getClienteId()!=0||cuenta.getClienteId()!=null) {
 			LocalDateTime horaCreacion = LocalDateTime.now();
 			cuenta.setFechCreacion(horaCreacion);
 			cuenta.setFechModificacion(horaCreacion);
 			cuenta.setNumeroCuenta(nCuenta);
-			cuentaCreada= cuentaRepository.save(cuenta);
+			cuentaCreada = cuentaRepository.save(cuenta);
 		}else {
-			throw new RuntimeException("Error la cuenta 0 no es valida");
+			throw new RuntimeException("Error la cuenta 0 y no es valida");
 		};
+		
 		return cuentaCreada;
 	}
 	

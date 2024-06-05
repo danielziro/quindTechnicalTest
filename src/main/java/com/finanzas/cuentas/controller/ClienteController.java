@@ -1,5 +1,6 @@
 package com.finanzas.cuentas.controller;
 
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -29,9 +30,8 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/crearCliente")
-	 public Cliente createCliente(@RequestBody Cliente cliente) {
-		LocalDateTime ahora = LocalDateTime.now();
-		cliente.setFechModificacion(ahora);
+	 public Cliente createCliente(@RequestBody Cliente cliente) throws ParseException {
+		
 	   return clienteService.createCliente(cliente);
 	  }
 	
@@ -44,8 +44,8 @@ public class ClienteController {
 	   return clienteService.updateCliente(clienteExistente);
 	  }
 	
-	@PostMapping("/EliminarCliente/{id}")
-	 public void DeleteClient(@PathVariable long id) {
-	    clienteService.deletCliente(id);
+	@PostMapping("/EliminarCliente/{documento}")
+	 public void DeleteClient(@PathVariable long documento) {
+	    clienteService.deletCliente(documento);
 	  }
 }

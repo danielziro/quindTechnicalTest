@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Cuenta")
+@Table(name="cuenta")
 public class Cuenta {
 	@Id	
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -55,7 +55,7 @@ public class Cuenta {
 		this.exentaGMF = exentaGMF;
 		this.fechCreacion = fechCreacion;
 		this.fechModificacion = fechModificacion;
-		ClienteId = clienteId;
+		this.ClienteId = clienteId;
 	}
 	
 	public Cuenta( Long tipoCuenta, Long numeroCuenta, Long estado, double saldo, String exentaGMF,
@@ -68,7 +68,7 @@ public class Cuenta {
 		this.exentaGMF = exentaGMF;
 		this.fechCreacion = fechCreacion;
 		this.fechModificacion = fechModificacion;
-		ClienteId = clienteId;
+		this.ClienteId = clienteId;
 	}
 
 	public Long getId() {
@@ -140,7 +140,7 @@ public class Cuenta {
 	}
 
 	public void setClienteId(Long clienteId) {
-		ClienteId = clienteId;
+		this.ClienteId = clienteId;
 	}
 
 	@Override

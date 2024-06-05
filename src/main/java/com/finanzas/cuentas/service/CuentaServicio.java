@@ -15,7 +15,6 @@ public interface CuentaServicio {
 	public Cuenta updateCuenta(long id, Cuenta cuenta);
 	
 	public void deleteCuenta(long id);
-
 	
 	
 
